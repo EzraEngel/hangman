@@ -19,7 +19,6 @@ bool guess_allowed(string player_guess);
 int add_to_guess_list(string player_guess, string& guess_list);
 int print_guess_list(string guess_list);
 
-
 int main() {
   string guess_list = "                          ";
   string winning_word = set_word();
