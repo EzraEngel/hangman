@@ -13,6 +13,11 @@ private:
   string winning_word;
 
 public:
+  Game(int num_strikes) {
+    set_strikes(num_strikes);
+    set_word();
+  }
+
   int play_game() {
     string player_guess = "";
     cout << endl;

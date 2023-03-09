@@ -10,9 +10,7 @@ using namespace std;
 int num_strikes = 12;
 
 int main() {
-  Game new_game;
-  new_game.set_strikes(num_strikes);
-  new_game.set_word();
+  Game new_game(num_strikes);
   new_game.play_intro();
   new_game.set_progress();
   while (!new_game.is_over()) {
