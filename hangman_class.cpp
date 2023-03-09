@@ -7,15 +7,15 @@
 
 using namespace std;
 
-int num_tries = 12;
+int num_strikes = 12;
 
 int main() {
   Game new_game;
-  new_game.tries_remaining = num_tries;
+  new_game.set_strikes(num_strikes);
   new_game.set_word();
-  new_game.set_progress();
   new_game.play_intro();
-  while (!new_game.is_won && !new_game.is_lost) {
+  new_game.set_progress();
+  while (!new_game.is_over()) {
     new_game.play_game();
     new_game.check_win();
     new_game.check_loss();

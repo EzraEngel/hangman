@@ -4,19 +4,20 @@
 #include <ctime>
 
 class Game {
-public:
+private:
   bool is_won = false;
   bool is_lost = false;
-  int tries_remaining;
+  int strikes_remaining;
   string word_progress;
   string guess_list = "                          ";
   string winning_word;
 
+public:
   int play_game() {
     string player_guess = "";
     cout << endl;
     cout << "=========================================" << endl;
-    cout << "           GUESS A LETTER!\n";
+    cout << "           GUESS A LETTER!               " << endl;
     cout << "=========================================" << endl;
     cin >> player_guess;
     player_guess[0] = tolower(player_guess[0]);
@@ -48,10 +49,10 @@ public:
         print_guess_list();
       }
       else {
-        tries_remaining--;
+        strikes_remaining--;
         cout << word_progress << endl;
-      cout << "Bad guess! You have " << tries_remaining << " strikes remaining." << endl;
-      cout << "Your guesses: ";
+        cout << "Bad guess! You have " << strikes_remaining << " strikes remaining." << endl;
+        cout << "Your guesses: ";
         print_guess_list();
       }
     }
@@ -76,7 +77,7 @@ public:
   }
 
   void check_loss() {
-    if (tries_remaining == 0) {
+    if (strikes_remaining == 0) {
       is_lost = true;
       cout << endl;
       cout << "=======================================" << endl;
@@ -146,7 +147,15 @@ public:
     cout << endl << "#############################################\n";
     cout << "           Welcome to HANGMAN!\n";
     cout << "#############################################\n";
-    cout << "You have " << tries_remaining << " strikes remaining.\n";
+    cout << "You have " << strikes_remaining << " strikes remaining.\n";
     cout << "The word has " << winning_word.length() << " letters.\n";
+  }
+
+  void set_strikes(int num_strikes) {
+    strikes_remaining = num_strikes;
+  }
+
+  bool is_over() {
+    return (is_won || is_lost);
   }
 };
